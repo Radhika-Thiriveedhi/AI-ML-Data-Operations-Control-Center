@@ -24,6 +24,11 @@ def overview():
     return jsonify({"pipeline": pipeline.summary(), "models": models.summary(), "monitoring": monitor.summary()})
 
 
+@bp.get("/api/models")
+def list_models():
+    return jsonify(models.list_models())
+
+
 @bp.post("/api/pipeline/run")
 def run_pipeline():
     source = (request.get_json(silent=True) or {}).get("source", "sample dataset")

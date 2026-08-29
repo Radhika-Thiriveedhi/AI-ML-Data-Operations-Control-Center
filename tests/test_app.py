@@ -11,6 +11,13 @@ def test_overview():
     assert client().get("/api/overview").json["models"]["registry_size"] >= 3
 
 
+def test_model_registry_endpoint():
+    resp = client().get("/api/models")
+    assert resp.status_code == 200
+    assert "models" in resp.json
+    assert resp.json["summary"]["best_model"]
+
+
 def test_health_endpoint():
     resp = client().get("/api/health")
     assert resp.status_code == 200
