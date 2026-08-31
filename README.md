@@ -1,31 +1,55 @@
 # ML & Data Operations Control Center
 
-A production-style AI/ML and data application covering data ingestion, preprocessing, feature engineering concepts, model training, registry workflows and operational monitoring. It uses Flask routers and interactive buttons and requires no database connection.
+A production-style AI/ML and data application covering data ingestion, preprocessing, feature engineering concepts, model training, registry workflows, and operational monitoring. It uses Flask routes and a lightweight browser UI and does not require a database.
 
-## Features
+## Highlights
 - Data pipeline execution dashboard
-- Schema and preprocessing workflow
+- Schema and preprocessing workflow orchestration
 - Feature engineering and quality-control architecture
 - Model training and registry simulation
-- Drift, latency, freshness and health monitoring
+- Drift, latency, freshness, and health monitoring
 - Stateless REST APIs
 - Responsive browser UI
-- Automated tests and CI
+- Automated tests and CI-friendly validation
 
-## Install
-`python -m venv .venv`
-Windows PowerShell: `.venv\Scripts\Activate.ps1`
-`pip install -r requirements.txt`
+## Quick start
 
-## Build
-`python -m compileall app services run.py`
+```bash
+python -m venv .venv
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python run.py
+```
 
-## Run
-`python run.py`
-Open `http://127.0.0.1:5000`
+Open http://127.0.0.1:5000
 
-## Test
-`python -m pytest`
+## Useful commands
 
-## Structure
-`app/` routers and application factory; `services/` ML/data services; `templates/` UI; `static/` browser assets; `tests/` CI tests.
+```bash
+python -m pytest
+python -m compileall app services run.py
+```
+
+## Docker
+
+```bash
+docker build -t ml-ops-control-center .
+docker run -p 5000:5000 ml-ops-control-center
+```
+
+## Project structure
+- app/: Flask app and route definitions
+- services/: ML and data operations service logic
+- templates/: browser UI
+- static/: frontend assets
+- tests/: regression tests
+
+## Operational endpoints
+- GET /api/health
+- GET /api/overview
+- GET /api/models
+- POST /api/pipeline/run
+- POST /api/models/train
+- GET /api/monitoring/metrics
+- POST /api/monitoring/check

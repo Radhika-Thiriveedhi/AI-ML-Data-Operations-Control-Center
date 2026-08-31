@@ -48,6 +48,11 @@ def train_model():
     return jsonify(models.train(name, task))
 
 
+@bp.get("/api/monitoring/metrics")
+def monitoring_metrics():
+    return jsonify(monitor.metrics())
+
+
 @bp.post("/api/monitoring/check")
 def check():
     return jsonify(monitor.check())
